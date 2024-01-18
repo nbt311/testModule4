@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cities List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+<div class="container content-container">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a href="/cities/create" class="btn btn-primary ml-auto-custom mr-2">Add</a>
+    <form th:action="@{/cities/search}" class="form-inline my-2 my-lg-0 search-form" method="get">
+      <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <h2>Cities List</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="city, status: ${list}">
+        <td th:text="${status.count}"></td>
+        <td><a th:href="@{/cities/__${city.id}__/details}" th:text="${city.name}"></a></td>
+        <td th:text="${city.country.name}"></td>
+        <td>
+          <a th:href="@{/cities/__${city.id}__/edit}" class="btn btn-sm btn-edit">Edit</a>
+          <a onclick="return confirm('Are you sure?')" th:href="@{/cities/__${id}__/delete}" class="btn btn-sm btn-delete ml-2">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

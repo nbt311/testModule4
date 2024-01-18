@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>City Detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+                <div class="text-center mt-4">
+                    <h1 class="h2">City Detail</h1>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="m-sm-4">
+                            <form  th:object="${city}">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control form-control-lg" type="text" name="name" th:field="*{name}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <input class="form-control form-control-lg" type="text" name="country" th:value="${city.country.name}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Area</label>
+                                    <input class="form-control form-control-lg" type="text" name="area" th:field="*{acreage}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Population</label>
+                                    <input class="form-control form-control-lg" type="text" name="population" th:field="*{population}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>GDP</label>
+                                    <input class="form-control form-control-lg" type="text" name="gdp" th:field="*{gdp}" disabled>
+                                <div class="form-group">
+                                    <label>Decription
+                                        <textarea class="form-control form-control-lg " rows="5" cols="100" name="decription" style="resize: vertical;" th:field="*{description}" disabled>
+                                        </textarea>
+                                    </label>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
