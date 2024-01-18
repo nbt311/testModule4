@@ -48,10 +48,10 @@ public class CityController {
         cityService.saveCity(city);
         return "redirect:/cities";
     }
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}/delete")
     public String deleteCity(@PathVariable Long id){
         cityService.deleteCity(id);
-        return "redirect:cities";
+        return "redirect:/cities";
     }
     @GetMapping("/{id}/details")
     public String viewCityDetails(Model model,@PathVariable Long id){
